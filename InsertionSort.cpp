@@ -26,7 +26,7 @@ int main(void) {
     for (i = 0; i < ARR_SIZE; i++) { printf("%d ", array[i]); }
     printf("\n");
 
-    insertion_sort2(array, ARR_SIZE);
+    insertion_sort(array, ARR_SIZE);
 
     printf("After sort: ");
     for (i = 0; i < ARR_SIZE; i++) { printf("%d ", array[i]); }
