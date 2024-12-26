@@ -4,17 +4,37 @@ using namespace std;
 
 /* 挿入ソート */
 void insertion_sort(int array[], int array_size) {
+#if 0
     int j = 0;
-
-    //若干バブルソート的なやり方に近いかも。
-    //挿入は難しいです。
     for (int i = 1; i < array_size; i++) {   // 先頭から順にソート
         j = i;
+        //バブルソート的なやり方に近い方法
         while ((j > 0) && (array[j - 1] > array[j])) {   //整列済みの場合は処理しない
             swap(array[j - 1], array[j]);   // 整列されていない要素を交換
             j--;
         }
     }
+#else
+    for (int i = 1; i < array_size; i++) {   // 先頭から順にソート
+        int j = i - 1;
+
+        //線形探索の基本的なやり方に近い　挿入先を探す
+        while (j >= 0) {
+            if (array[j] < array[i]) {
+                break;
+            }
+            j--;
+        }
+        // そっから～ソート済み＋１までずらす
+        int tmp = array[i];
+        for (int a=i; a>j+1; a--)
+        {
+            swap(array[a], array[a - 1]);   // 整列されていない要素を交換
+        }
+        array[j + 1] = tmp;
+    }
+#endif
+
 }
 
 #define ARR_SIZE 10
